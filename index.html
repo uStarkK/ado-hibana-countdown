@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ado HIBANA Tour Countdown</title>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://a.storyblok.com/f/178900/1920x1080/73393b35df/ado-hibana-world-tour.png');
+            background-size: cover;
+            background-position: center;
+            color: #F8F5F2;
+        }
+
+        .countdown-container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            border: 5px solid #F05454;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #F05454;
+            font-family: 'Kaushan Script', cursive;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .time-box {
+            margin: 0 20px;
+            text-align: center;
+            background-color: rgba(240, 84, 84, 0.4);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: #F8F5F2;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .label {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            font-weight: bold;
+
+        }
+    </style>
+</head>
+<body>
+
+<div class="countdown-container">
+    <h1> ADO ツアー カウントダウン</h1>
+    <div class="countdown">
+        <div class="time-box">
+            <span id="days">0</span>
+            <div class="label">Days 日</div>
+        </div>
+        <div class="time-box">
+            <span id="hours">0</span>
+            <div class="label">Hours 時間</div>
+        </div>
+        <div class="time-box">
+            <span id="minutes">0</span>
+            <div class="label">Minutes 分</div>
+        </div>
+        <div class="time-box">
+            <span id="seconds">0</span>
+            <div class="label">Seconds 秒</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateCountdown() {
+        const concertDate = new Date('August 15, 2025 00:00:00').getTime();
+        const now = new Date().getTime();
+        const timeLeft = concertDate - now;
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        document.getElementById('days').innerText = days;
+        document.getElementById('hours').innerText = hours;
+        document.getElementById('minutes').innerText = minutes;
+        document.getElementById('seconds').innerText = seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
